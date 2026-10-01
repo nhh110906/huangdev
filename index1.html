@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title data-en="Nguyen Huy Hoang Portfolio" data-vi="Nguyễn Huy Hoàng Portfolio">Nguyen Huy Hoang Portfolio</title>
+    <link rel="icon" href="asset/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== THEME ===== */
+        :root {
+            --bg: #0b1020;
+            --panel: #121933;
+            --card: #182044;
+            --text: #e6ebff;
+            --soft: #9aa4d4;
+            --accent: #6c7cff;
+            --frame: #182044;
+        }
+
+        body.light {
+            --bg: #eef2ff;
+            --panel: #ffffff;
+            --card: #ffffff;
+            --text: #0f172a;
+            --soft: #64748b;
+            --accent: #6366f1;
+            --frame: #ededed;
+        }
+
+        body {
+            font-family: Inter,sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: .3s;
+        }
+
+        /* ===== LAYOUT ===== */
+        .app {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background: var(--panel);
+            padding: 40px 30px;
+            border-right: 1px solid rgba(255,255,255,.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+       .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0,0,0,.25);
+        }
+
+        .name {
+            font-size: 35px;
+            font-weight: 900;
+        }
+
+        .role {
+            font-size: 20px;
+            color: var(--soft);
+            margin-top: 6px;
+        }
+
+        .sidebar p {
+            color: var(--soft);
+            margin-top: 14px;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+
+        .sidebar-section {
+            margin-top: 26px;
+        }
+
+        .sidebar-section-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        /* ===== EDUCATION =====*/
+        .edu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .edu-school {
+            color: var(--soft);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .edu-major {
+            color: var(--soft);
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .edu-time {
+            color: var(--soft);
+            font-size: 14px;
+            opacity: 0.8;
+            /*margin-top: 4px;*/
+        }
+
+        /* ===== SOCIAL ICON BAR ===== */
+        .social {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* từng dòng contact */
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: var(--frame);
+            border: 1px solid rgba(255,255,255,.05);
+            text-decoration: none;
+            color: white;
+            transition: .25s;
+        }
+
+            /* icon */
+            .social-item img {
+                width: 22px;
+                height: 22px;
+            }
+
+            /* text */
+            .social-item span {
+                font-size: 15px;
+                font-weight: 500;
+                opacity: 0.9;
+                font-weight: bold;
+                color: var(--soft);
+            }
+
+            /* hover effect */
+            .social-item:hover {
+                background: var(--accent);
+                transform: translateX(6px);
+            }
+
+        /* ===== MAIN ===== */
+        .main {
+            padding: 40px 60px;
+        }
+
+        /* ===== TOPBAR ===== */
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .top-btn {
+            padding: 10px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.06);
+            font-weight: 600;
+            background: var(--panel);
+            color: var(--text);
+            cursor: pointer;
+            transition: .25s;
+        }
+
+            .top-btn:hover {
+                background: var(--accent);
+                transform: translateY(-2px);
+            }
+
+        /* ===== SECTION ===== */
+        .section-title {
+            font-size: 35px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 10px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: var(--accent);
+            }
+
+        .year-block {
+            margin-bottom: 40px;
+        }
+
+        .year {
+            font-size: 33px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        /* ===== PROJECT ===== */
+        .project {
+            background: var(--card);
+            padding: 24px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+            .project::before {
+                content: "";
+                position: absolute;
+                left: -34px;
+                top: 32px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: var(--accent);
+            }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,.1);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,.2);
+        }
+
+        .project-title-info {
+            display: flex;
+            flex-direction: column;
+            /*gap: 1px;*/
+        }
+
+        .project-title {
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .project-desc {
+            margin-top: 8px;
+            color: var(--soft);
+        }
+
+        /* ===== GALLERY (CẢI THIỆN ĐỂ XỬ LÝ ẢNH NHIỀU KÍCH THƯỚC) ===== */
+        .gallery {
+            margin-top: 18px;
+            overflow: hidden;
+            border-radius: 14px;
+            height: 775px;
+            position: relative;
+            background: rgba(0,0,0,.15);
+        }
+
+        .gallery-track {
+            display: flex;
+            transition: transform .4s ease-in-out;
+            height: 100%;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        /* ===== VIDEO ===== */
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 14px;
+            margin-top: 18px;
+        }
+
+        /* META TAG */
+        .project-meta {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(108,124,255,.15);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* STORY */
+        .project-story {
+            margin-top: 12px;
+            color: var(--soft);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* STORE LINKS */
+        .project-links {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(108,124,255,.12);
+            border: 1px solid rgba(108,124,255,.25);
+            text-decoration: none;
+            color: var(--text);
+        }
+
+            .store-btn img {
+                width: 16px;
+                height: 16px;
+            }
+
+
+            .store-btn:hover {
+                background: var(--accent);
+                transform: translateY(-1px);
+            }
+
+        /* ===== CURRENTLY PLAYING (icon-only grid) ===== */
+        .playing-grid {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+ 
+        .playing-item {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--frame);
+            border: 1px solid rgba(255,255,255,.05);
+            transition: .25s;
+            flex-shrink: 0;
+        }
+ 
+            .playing-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+ 
+            .playing-item:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+                box-shadow: 0 8px 18px rgba(0,0,0,.25);
+            }
+
+
+        /* ===== MOBILE ===== */
+        @media(max-width:900px) {
+            .app {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,.05);
+            }
+
+            .gallery {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F3N95N39ZR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F3N95N39ZR');
+</script>
+    
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+
+            <img src="asset/avatar(1).png" alt="Tran Duc Long" class="avatar">
+
+            <div class="name"
+                 data-en="Tran Duc Long"
+                 data-vi="Trần Đức Long">Tran Duc Long</div>
+
+            <div class="role"
+                 data-en="Unity Developer"
+                 data-vi="Lập trình viên Unity">
+                Unity Developer
+            </div>
+
+            <!-- OBJECTIVE -->
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title"
+                     data-en="Objective"
+                     data-vi="Mục tiêu">
+                    Objective
+                </div>
+
+                <p class="section-text"
+                   data-en="My goal is to grow into a developer who can design and develop gameplay and core game systems that deliver stable performance and meaningful player experiences."
+                   data-vi="Mục tiêu của tôi là phát triển thành lập trình viên có thể thiết kế và phát triển gameplay cùng các hệ thống game cốt lõi, giúp game vận hành ổn định và mang lại trải nghiệm có giá trị cho người chơi.">
+                    My goal is to grow into a developer who can design and develop gameplay and core game systems that deliver stable performance and meaningful player experiences.
+                </p>
+
+            </div>
+
+            <!-- Education -->
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title"
+                     data-en="Education"
+                     data-vi="Học vấn">
+                    Education
+                </div>
+
+                <div class="edu-item">
+
+                    <div class="edu-school"
+                         data-en="FPT University Ha Noi"
+                         data-vi="Đại học FPT Hà Nội">
+                        FPT University Ha Noi
+                    </div>
+
+                    <div class="edu-major"
+                         data-en="Software Engineering"
+                         data-vi="Kỹ thuật phần mềm">
+                        Software Engineering
+                    </div>
+
+                    <div class="edu-time">
+                        2021 — 2025
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT INFORMATION -->
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title"
+                     data-en="Contact Information"
+                     data-vi="Thông tin liên hệ">
+                    Contact Information
+                </div>
+
+                <div class="social">
+
+                    <a class="social-item" href="https://www.facebook.com/tranduclong0708" target="_blank">
+                        <img src="https://cdn.simpleicons.org/facebook" alt="facebook">
+                        <span>Facebook</span>
+                    </a>
+
+                    <a class="social-item" href="https://mail.google.com/mail/?view=cm&to=tranduclong09@gmail.com" target="_blank">
+                        <img src="https://cdn.simpleicons.org/gmail" alt="gmail">
+                        <span>Gmail</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-section">
+ 
+                <div class="sidebar-section-title"
+                     data-en="Currently Playing"
+                     data-vi="Đang chơi">
+                    Currently Playing
+                </div>
+ 
+                <div class="playing-grid">
+ 
+                    <div class="playing-item" title="League of Legends">
+                        <img src="asset/games/lol.png" alt="League of Legends">
+                    </div>
+ 
+                    <div class="playing-item" title="Valorant">
+                        <img src="asset/games/valorant.png" alt="Valorant">
+                    </div>
+ 
+                    <div class="playing-item" title="Teamfight Tactics">
+                        <img src="asset/games/tft.png" alt="Teamfight Tactics">
+                    </div>
+ 
+                    <div class="playing-item" title="Call of Dragons">
+                        <img src="asset/games/cod.png" alt="Call of Dragons">
+                    </div>
+ 
+                </div>
+ 
+            </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <button id="langBtn" class="top-btn" onclick="toggleLang()">🌐 EN</button>
+                <button id="themeBtn" class="top-btn" onclick="toggleTheme()">🌙 Theme</button>
+            </div>
+
+            <div class="section-title"
+                 data-en="Projects Timeline"
+                 data-vi="Dòng thời gian dự án">
+                Projects Timeline
+            </div>
+
+            <div class="timeline">
+
+                <div class="year-block">
+                    <div class="year">2026</div>
+
+                    <div class="project">
+
+                        <div class="project-header">
+                            <img src="asset/FoodWar/icon.jpg" alt="Icon" class="project-icon">
+
+                            <div class="project-title-info">
+                                <div class="project-title">Food War</div>
+                                <!-- GENRE -->
+                                <div class="project-meta">
+                                    <span class="tag"
+                                          data-en="2D"
+                                          data-vi="2D">
+                                        2D
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Card Game"
+                                          data-vi="Game thẻ bài">
+                                        Card Game
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Cartoon"
+                                          data-vi="Hoạt hình">
+                                        Cartoon
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Strategy"
+                                          data-vi="Chiến thuật">
+                                        Strategy
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Multiplayer"
+                                          data-vi="Nhiều người chơi">
+                                        Multiplayer
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- STORE LINKS -->
+                        <div class="project-links">
+                            <!-- STORY -->
+                            <div class="project-story"
+                                 data-en="The world of Gastronomia is losing its taste! The dreaded Bland Army has launched a colorless assault, stealing away every flavor and hue in existence. Enter Pep, a young, ordinary chef suddenly thrust into destiny when chosen by the mythical Ancient Holy Spoon. To defeat the Bland King and stop his plot to turn the universe into a boring, gray void, Pep must embark on a tasty quest across five unique culinary realms to gather the legendary Golden Ingredients. Pack your bags, sharpen your spoon, and get ready for the ultimate Food War!"
+                                 data-vi="Thế giới Gastronomia đang dần mất đi hương vị! Đội quân Vô Vị đáng sợ đã khơi mào một cuộc tấn công không màu sắc, cướp đi mọi mùi vị và sắc màu đang tồn tại. Giữa bối cảnh đó, Pep — một đầu bếp trẻ tuổi, bình thường — bỗng chốc được đặt vào tay sứ mệnh định mệnh khi được lựa chọn bởi chiếc Thìa Thần Cổ Đại trong truyền thuyết. Để đánh bại Quái Vương Vô Vị và ngăn chặn âm mưu biến vũ trụ thành một khoảng không xám xịt, tẻ nhạt của hắn, Pep phải dấn thân vào một cuộc hành trình đầy 'thơm ngon' băng qua 5 vùng đất ẩm thực độc nhất vô nhị để thu thập những Nguyên Liệu Vàng huyền thoại. Hãy sửa soạn hành trang, mài sắc chiếc thìa của bạn và sẵn sàng cho trận đại chiến ẩm thực đỉnh cao!">
+                                The world of Gastronomia is losing its taste! The dreaded Bland Army has launched a colorless assault, stealing away every flavor and hue in existence. Enter Pep, a young, ordinary chef suddenly thrust into destiny when chosen by the mythical Ancient Holy Spoon. To defeat the Bland King and stop his plot to turn the universe into a boring, gray void, Pep must embark on a tasty quest across five unique culinary realms to gather the legendary Golden Ingredients. Pack your bags, sharpen your spoon, and get ready for the ultimate Food War!                           
+                                </div>
+
+                            <!-- GALLERY -->
+                            <div class="gallery">
+                                <div class="gallery-track">
+                                    <img src="asset/FoodWar/food_war1.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war2.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war3.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war4.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war5.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war6.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war7.png" draggable="false">
+                                    <img src="asset/FoodWar/food_war8.png" draggable="false">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project">
+
+                        <div class="project-header">
+                            <img src="asset/Commandos3D/icon.png" alt="Icon" class="project-icon">
+
+                            <div class="project-title-info">
+                                <div class="project-title">Commandos: 3D Shooter</div>
+                                <!-- GENRE -->
+                                <div class="project-meta">
+                                    <span class="tag"
+                                          data-en="3D"
+                                          data-vi="3D">
+                                        3D
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Action"
+                                          data-vi="Hành động">
+                                        Action
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Sci-fi"
+                                          data-vi="Sci-fi">
+                                        Sci-fi
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="RPG"
+                                          data-vi="RPG">
+                                        RPG
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Shooting"
+                                          data-vi="Bắn súng">
+                                        Shooting
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- STORE LINKS -->
+                        <div class="project-links">
+                            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.Ajna.Commandos3DShooter&pcampaignid=web_share" target="_blank">
+                                <img src="asset\google_play_icon.png">
+                                Google Play
+                            </a>
+
+                            <a class="store-btn" href="https://apps.apple.com/vn/app/commandos-3d-shooter/id6758985336" target="_blank">
+                                <img src="asset\app_store_icon.png">
+                                App Store
+                            </a>
+                            <!-- STORY -->
+                            <div class="project-story"
+                                 data-en="Humanity stands on the brink of collapse as combat robots suddenly turn against their creators and launch coordinated attacks across the world. You are deployed on high-risk missions to break through enemy forces, eliminate threats, and uncover the truth behind the uprising. Each victory brings you closer to discovering who — or what — is truly controlling the machines."
+                                 data-vi="Nhân loại đang đứng bên bờ sụp đổ khi các robot chiến đấu bất ngờ quay lưng lại với con người và phát động những cuộc tấn công trên toàn thế giới. Bạn được cử tham gia các nhiệm vụ nguy hiểm để xuyên thủng phòng tuyến địch, tiêu diệt kẻ thù và khám phá sự thật phía sau cuộc nổi dậy. Mỗi chiến thắng sẽ đưa bạn tiến gần hơn đến việc tìm ra ai — hoặc thứ gì — đang thực sự điều khiển các cỗ máy.">
+                                Humanity stands on the brink of collapse as combat robots suddenly turn against their creators and launch coordinated attacks across the world. You are deployed on high-risk missions to break through enemy forces, eliminate threats, and uncover the truth behind the uprising. Each victory brings you closer to discovering who — or what — is truly controlling the machines.
+                            </div>
+
+                            <!-- GALLERY -->
+                            <div class="gallery">
+                                <div class="gallery-track">
+                                    <img src="asset/Commandos3D/1.jpg" draggable="false">
+                                    <img src="asset/Commandos3D/2.jpg" draggable="false">
+                                    <img src="asset/Commandos3D/3.jpg" draggable="false">
+                                    <img src="asset/Commandos3D/4.jpg" draggable="false">
+                                    <img src="asset/Commandos3D/5.jpg" draggable="false">
+                                </div>
+                            </div>
+
+                            <!-- VIDEO -->
+                            <iframe src="https://www.youtube.com/embed/rnMFdbEvEcA"></iframe>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="year-block">
+                    <div class="year">2025</div>
+
+                    <div class="project">
+
+                        <div class="project-header">
+                            <img src="asset/TapAway3D/icon.png" alt="Icon" class="project-icon">
+                            <div class="project-title-info">
+                                <div class="project-title">Tap Away 3D</div>
+                                <!-- GENRE -->
+                                <div class="project-meta">
+                                    <span class="tag"
+                                          data-en="Puzzle"
+                                          data-vi="Giải đố">
+                                        Puzzle
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="3D"
+                                          data-vi="3D">
+                                        3D
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- STORE LINKS -->
+                        <div class="project-links">
+                            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.tapawaythreed.ajna&pcampaignid=web_share" target="_blank">
+                                <img src="asset\google_play_icon.png">
+                                Google Play
+                            </a>
+
+                            <a class="store-btn" href="https://apps.apple.com/us/app/puzzle-tap-away/id6757425899" target="_blank">
+                                <img src="asset\app_store_icon.png">
+                                App Store
+                            </a>
+
+                             <!-- STORY -->
+                            <div class="project-story"
+                                 data-en="Tap Away 3D is an incredibly addictive puzzle game where you tap to push blocks out of a 3D structure until everything is cleared. Rotate the shape, analyze it from every angle, and find the smartest way to beat every level!"
+                                 data-vi="Tap Away 3D là một trò chơi giải đố cực kỳ gây nghiện, nơi bạn chạm để đẩy các khối ra khỏi cấu trúc 3D cho đến khi tất cả được dọn sạch. Xoay hình, phân tích từng góc độ và tìm ra cách thông minh nhất để vượt qua mọi màn chơi!">
+                                Tap Away 3D is an incredibly addictive puzzle game where you tap to push blocks out of a 3D structure until everything is cleared. Rotate the shape, analyze it from every angle, and find the smartest way to beat every level!
+                            </div>
+
+                            <!-- GALLERY -->
+                            <div class="gallery">
+                                <div class="gallery-track">
+                                    <img src="asset/TapAway3D/1.jpg" draggable="false">
+                                    <img src="asset/TapAway3D/2.jpg" draggable="false">
+                                    <img src="asset/TapAway3D/3.jpg" draggable="false">
+                                    <img src="asset/TapAway3D/4.jpg" draggable="false">
+                                    <img src="asset/TapAway3D/5.jpg" draggable="false">
+                                    <img src="asset/TapAway3D/6.jpg" draggable="false">
+                                </div>
+                            </div>
+
+                            <!-- VIDEO -->
+                            <iframe src="https://www.youtube.com/embed/514sUQFYti8"></iframe>
+
+                        </div>
+                    </div>
+
+                    <div class="project">
+
+                        <div class="project-header">
+                            <img src="asset/SodaJam/icon.png" alt="Icon" class="project-icon">
+                            <div class="project-title-info">
+                                <div class="project-title">Soda Jam</div>
+                                <!-- GENRE -->
+                                <div class="project-meta">
+                                    <span class="tag"
+                                          data-en="Puzzle"
+                                          data-vi="Giải đố">
+                                        Puzzle
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="3D"
+                                          data-vi="3D">
+                                        3D
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- STORE LINKS -->
+                        <div class="project-links">
+                            <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.sodajam.ajna&pcampaignid=web_share" target="_blank">
+                                <img src="asset\google_play_icon.png">
+                                Google Play
+                            </a>
+
+                            <a class="store-btn" href="https://apps.apple.com/us/app/soda-jam-saga/id6756005088" target="_blank">
+                                <img src="asset\app_store_icon.png">
+                                App Store
+                            </a>
+
+                             <!-- STORY -->
+                            <div class="project-story"
+                                 data-en="Soda Jam – The Ultimate Drink Sorting Master! Your mission is simple yet challenging: sort all soda cans and beverages from the moving conveyor belt into the correct cartons based on their color and type."
+                                 data-vi="Soda Jam – Bậc thầy Phân loại Đồ uống Tuyệt đỉnh! Nhiệm vụ của bạn vừa đơn giản vừa đầy thử thách: sắp xếp tất cả lon soda và đồ uống từ băng chuyền đang di chuyển vào đúng thùng carton phù hợp với màu sắc và chủng loại của chúng.">
+                                 Soda Jam – The Ultimate Drink Sorting Master! Your mission is simple yet challenging: sort all soda cans and beverages from the moving conveyor belt into the correct cartons based on their color and type.
+                            </div>
+
+                            <!-- GALLERY -->
+                            <div class="gallery">
+                                <div class="gallery-track">
+                                    <img src="asset/SodaJam/0.jpg" draggable="false">
+                                    <img src="asset/SodaJam/1.jpg" draggable="false">
+                                    <img src="asset/SodaJam/2.jpg" draggable="false">
+                                    <img src="asset/SodaJam/3.jpg" draggable="false">
+                                    <img src="asset/SodaJam/4.jpg" draggable="false">
+                                    <img src="asset/SodaJam/5.jpg" draggable="false">
+                                    <img src="asset/SodaJam/6.jpg" draggable="false">
+                                </div>
+                            </div>
+
+                            <!-- VIDEO -->
+                            <iframe src="https://www.youtube.com/embed/1jodjzRIs6g"></iframe>
+
+                        </div>
+                    </div>
+
+                    <div class="project">
+
+                        <div class="project-header">
+                            <img src="asset/Blackout/icon.png" alt="Icon" class="project-icon">
+                            <div class="project-title-info">
+                                <div class="project-title">Blackout: The Vagabond’s Odyssey</div>
+                                <!-- GENRE -->
+                                <div class="project-meta">
+                                    <span class="tag"
+                                          data-en="Action"
+                                          data-vi="Hành động">
+                                        Action
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Roguelike"
+                                          data-vi="Roguelike">
+                                        Roguelike
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="2D"
+                                          data-vi="2D">
+                                        2D
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Adventure"
+                                          data-vi="Phiêu lưu">
+                                        Adventure
+                                    </span>
+
+                                    <span class="tag"
+                                          data-en="Dungeon"
+                                          data-vi="Ngục tối">
+                                        Dungeon
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- STORE LINKS -->
+                        <div class="project-links">
+                            <a class="store-btn" href="https://fistjuicer.itch.io/blackout" target="_blank">
+                                <img src="https://cdn.simpleicons.org/itchdotio">
+                                Itch.io
+                            </a>
+                        </div>
+
+                        <!-- STORY -->
+                        <div class="project-story"
+                             data-en="After a catastrophic event known as The Blackout erased history and plunged the world into eternal twilight, humanity struggles to survive among the ruins. You awaken as a lone wanderer, exploring procedurally shifting lands, battling twisted creatures, and uncovering fragments of a forgotten civilization. Every step brings you closer to the truth behind The Blackout — or deeper into the darkness."
+                             data-vi="Sau thảm họa mang tên The Blackout xóa sạch lịch sử và nhấn chìm thế giới vào màn hoàng hôn vĩnh cửu, nhân loại phải vật lộn sinh tồn giữa những tàn tích. Bạn tỉnh dậy với vai trò một kẻ lữ hành cô độc, khám phá những vùng đất thay đổi liên tục, chiến đấu với sinh vật méo mó và lần theo dấu vết của một nền văn minh đã bị lãng quên. Mỗi bước đi đưa bạn tiến gần hơn đến sự thật về The Blackout — hoặc chìm sâu hơn vào bóng tối.">
+                            After a catastrophic event known as The Blackout erased history and plunged the world into eternal twilight, humanity struggles to survive among the ruins. You awaken as a lone wanderer, exploring procedurally shifting lands, battling twisted creatures, and uncovering fragments of a forgotten civilization. Every step brings you closer to the truth behind The Blackout — or deeper into the darkness.
+                        </div>
+
+
+
+                        <!-- GALLERY -->
+                        <div class="gallery">
+                            <div class="gallery-track">
+                                <img src="asset/Blackout/blackout1.png" draggable="false">
+                                <img src="asset/Blackout/blackout2.png" draggable="false">
+                                <img src="asset/Blackout/blackout3.png" draggable="false">
+                                <img src="asset/Blackout/blackout4.png" draggable="false">
+                            </div>
+                        </div>
+
+                        <!-- VIDEO -->
+                        <iframe src="https://www.youtube.com/embed/MSHNYsiRsq4"></iframe>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        /* LANG */
+        let lang = "en";
+
+        function toggleLang() {
+            lang = lang === "en" ? "vi" : "en";
+
+            document.querySelectorAll("[data-en]").forEach(el => {
+                el.innerText = el.dataset[lang];
+            });
+
+            document.getElementById("langBtn").innerText =
+                lang === "en" ? "🌐 EN" : "🌐 VI";
+        }
+
+        /* THEME */
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+            const btn = document.getElementById("themeBtn");
+
+            if (document.body.classList.contains("light")) {
+                btn.innerText = "☀️ Theme";
+            } else {
+                btn.innerText = "🌙 Theme";
+            }
+        }
+
+        /* SLIDE */
+        document.querySelectorAll(".gallery").forEach(g => {
+            const track = g.querySelector(".gallery-track");
+            const slides = track.children;
+            let i = 0;
+
+            setInterval(() => {
+                i = (i + 1) % slides.length;
+                track.style.transform = `translateX(-${i * 100}%)`;
+            }, 3500);
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
