@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title
       data-en="Nguyen Huy Hoang Portfolio"
-      data-vi="Nguyễn Huy Hoàng Portfolio"
+      data-vi="Nguyen Huy Hoang Portfolio"
     >
       Nguyen Huy Hoang Portfolio
     </title>
@@ -19,14 +20,64 @@
     />
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- ================= LIGHT MODE CSS ================= -->
+
+    <style>
+      /* Màu nền chính */
+      body.light-mode {
+        background: #f5f7fb !important;
+        color: #111827 !important;
+      }
+
+      /* Sidebar */
+      body.light-mode aside {
+        background: #ffffff !important;
+        border-right: 1px solid #e5e7eb;
+      }
+
+      /* Chữ phụ */
+      body.light-mode .text-\[\#9ba8d8\] {
+        color: #667085 !important;
+      }
+
+      /* Chữ contact */
+      body.light-mode .text-\[\#aeb8dd\] {
+        color: #475467 !important;
+      }
+
+      /* Các nút contact */
+      body.light-mode .bg-\[\#192344\] {
+        background: #eef2f7 !important;
+      }
+
+      body.light-mode .bg-\[\#192344\]:hover {
+        background: #dfe5ee !important;
+      }
+
+      /* Button EN / VI và Theme */
+      body.light-mode .bg-\[\#141d3a\] {
+        background: #eef2f7 !important;
+        color: #111827 !important;
+      }
+
+      body.light-mode .bg-\[\#141d3a\]:hover {
+        background: #dfe5ee !important;
+      }
+
+      /* Hover chung */
+      body.light-mode .hover\:bg-\[\#26345f\]:hover {
+        background: #dfe5ee !important;
+      }
+    </style>
   </head>
 
   <body class="bg-[#090d20] text-white font-['Inter']">
+    <!-- ================= SIDEBAR ================= -->
 
-    <!-- Sidebar -->
     <aside class="fixed left-0 top-0 w-[300px] h-screen bg-[#11182f] p-8">
-
       <!-- Avatar -->
+
       <div class="mb-3">
         <img
           src="avatar.jpg"
@@ -36,60 +87,88 @@
       </div>
 
       <!-- Name -->
-      <h1 class="text-3xl font-extrabold mb-1">
+
+      <h1
+        class="text-3xl font-extrabold mb-1"
+        data-en="Nguyen Huy Hoang"
+        data-vi="Nguyễn Huy Hoàng"
+      >
         Nguyen Huy Hoang
       </h1>
 
       <!-- Job -->
-      <p class="text-lg text-[#9ba8d8] mb-8">
+
+      <p
+        class="text-lg text-[#9ba8d8] mb-8"
+        data-en="Game Designer"
+        data-vi="Nhà thiết kế trò chơi"
+      >
         Game Designer
       </p>
 
+      <!-- ================= OBJECTIVE ================= -->
 
-      <!-- Objective -->
       <section class="mb-8">
-
-        <h2 class="text-xl font-bold mb-3">
+        <h2
+          class="text-xl font-bold mb-3"
+          data-en="Objective"
+          data-vi="Mục tiêu"
+        >
           Objective
         </h2>
 
-        <p class="text-[#9ba8d8] leading-6">
-          My goal is to become a Game Designer capable of creating
-          visually stunning and immersive environments that enhance
-          the overall player experience.
+        <p
+          class="text-[#9ba8d8] leading-6"
+          data-en="My goal is to become a Game Designer capable of creating visually stunning and immersive environments that enhance the overall player experience."
+          data-vi="Mục tiêu của tôi là trở thành một Game Designer có khả năng tạo ra những môi trường trực quan ấn tượng và sống động, góp phần nâng cao trải nghiệm tổng thể của người chơi."
+        >
+          My goal is to become a Game Designer capable of creating visually
+          stunning and immersive environments that enhance the overall player
+          experience.
         </p>
-
       </section>
 
+      <!-- ================= EDUCATION ================= -->
 
-      <!-- Education -->
       <section class="mb-8">
-
-        <h2 class="text-xl font-bold mb-3">
+        <h2
+          class="text-xl font-bold mb-3"
+          data-en="Education"
+          data-vi="Học vấn"
+        >
           Education
         </h2>
 
-        <h3 class="font-bold">
+        <h3
+          class="font-bold"
+          data-en="Thuy Loi University - Ha Noi"
+          data-vi="Đại học Thủy Lợi - Hà Nội"
+        >
           Thuy Loi University - Ha Noi
         </h3>
 
-        <p class="text-[#9ba8d8] mt-1 leading-6">
+        <p
+          class="text-[#9ba8d8] mt-1 leading-6"
+          data-en="Information System<br>2024 - 2028"
+          data-vi="Hệ thống thông tin<br>2024 - 2028"
+        >
           Information System<br />
           2024 - 2028
         </p>
-
       </section>
 
+      <!-- ================= CONTACT ================= -->
 
-      <!-- Contact -->
       <section class="mb-8">
-
-        <h2 class="text-xl font-bold mb-4">
+        <h2
+          class="text-xl font-bold mb-4"
+          data-en="Contact Information"
+          data-vi="Thông tin liên hệ"
+        >
           Contact Information
         </h2>
 
         <div class="flex flex-col gap-3">
-
           <a
             href="https://web.facebook.com/nhh.sw"
             class="bg-[#192344] px-4 py-3 rounded-xl text-[#aeb8dd] font-semibold hover:bg-[#26345f] transition"
@@ -103,29 +182,29 @@
           >
             📧 Gmail
           </a>
-
         </div>
-
       </section>
 
+      <!-- ================= CURRENTLY PLAYING ================= -->
 
-      <!-- Currently Playing -->
       <section>
-
-        <h2 class="text-xl font-bold mb-4">
+        <h2
+          class="text-xl font-bold mb-4"
+          data-en="Currently Playing"
+          data-vi="Đang chơi"
+        >
           Currently Playing
         </h2>
 
         <div class="flex gap-3">
-
           <img
-            src="league-of-legends.jpg"
+            src="lol.jpg"
             alt="League of Legends"
             class="w-12 h-12 rounded-xl object-cover"
           />
 
           <img
-            src="valorant.jpg"
+            src="valorant.png"
             alt="Valorant"
             class="w-12 h-12 rounded-xl object-cover"
           />
@@ -137,52 +216,117 @@
           />
 
           <img
-            src="game4.jpg"
-            alt="Game"
+            src="dragonboy.jpeg"
+            alt="Dragon Boy"
             class="w-12 h-12 rounded-xl object-cover"
           />
-
         </div>
-
       </section>
-
     </aside>
 
+    <!-- ================= MAIN ================= -->
 
-    <!-- Main -->
     <main class="ml-[300px] min-h-screen p-16">
+      <!-- ================= HEADER ================= -->
 
-      <!-- Header -->
       <header class="flex justify-between items-center mb-12">
-
-        <h1 class="text-4xl font-extrabold">
+        <h1
+          class="text-4xl font-extrabold"
+          data-en="Projects Timeline"
+          data-vi="Dòng thời gian dự án"
+        >
           Projects Timeline
         </h1>
 
+        <!-- ================= BUTTONS ================= -->
+
         <div class="flex gap-3">
+          <!-- LANGUAGE BUTTON -->
 
           <button
+            id="langBtn"
+            onclick="toggleLang()"
             class="bg-[#141d3a] px-5 py-3 rounded-xl font-semibold hover:bg-[#26345f] transition"
           >
             🌐 EN
           </button>
 
+          <!-- THEME BUTTON -->
+
           <button
+            id="themeBtn"
+            onclick="toggleTheme()"
             class="bg-[#141d3a] px-5 py-3 rounded-xl font-semibold hover:bg-[#26345f] transition"
+            data-en="☀️ Light"
+            data-vi="☀️ Sáng"
           >
-            🌙 Theme
+            ☀️ Light
           </button>
-
         </div>
-
       </header>
 
+      <!-- ================= PROJECTS ================= -->
 
-     <div>
-        <h3>chao me may</h3>
-        </div>
-
+      <div>
+        <h3 class="text-2xl font-bold" data-en="Hi" data-vi="Chào">Hi</h3>
+      </div>
     </main>
 
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+      /* ================= LANGUAGE ================= */
+
+      let lang = localStorage.getItem("language") || "en";
+
+      function updateLanguage() {
+        document.querySelectorAll("[data-en]").forEach((el) => {
+          el.innerHTML = el.dataset[lang];
+        });
+
+        document.getElementById("langBtn").innerText =
+          lang === "en" ? "🌐 EN" : "🌐 VI";
+
+        document.documentElement.lang = lang;
+      }
+
+      function toggleLang() {
+        lang = lang === "en" ? "vi" : "en";
+
+        localStorage.setItem("language", lang);
+
+        updateLanguage();
+      }
+
+      /* ================= THEME ================= */
+
+      let darkMode = localStorage.getItem("theme") !== "light";
+
+      function updateTheme() {
+        document.body.classList.toggle("light-mode", !darkMode);
+
+        const themeBtn = document.getElementById("themeBtn");
+
+        if (darkMode) {
+          themeBtn.innerText = lang === "en" ? "☀️ Light" : "☀️ Sáng";
+        } else {
+          themeBtn.innerText = lang === "en" ? "🌙 Dark" : "🌙 Tối";
+        }
+      }
+
+      function toggleTheme() {
+        darkMode = !darkMode;
+
+        localStorage.setItem("theme", darkMode ? "dark" : "light");
+
+        updateTheme();
+      }
+
+      /* ================= START ================= */
+
+      updateLanguage();
+
+      updateTheme();
+    </script>
   </body>
 </html>
